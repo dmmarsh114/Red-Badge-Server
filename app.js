@@ -8,6 +8,7 @@ const app = express();
 const user = require('./controllers/usercontroller');
 const feed = require('./controllers/feedController');
 const myMemes = require('./controllers/myMemes');
+const vote = require('./controllers/votingController');
 
 // import db
 const sequelize = require('./db');
@@ -21,7 +22,7 @@ app.use(express.json());
 app.use('/user', user);
 app.use('/feed', feed);
 app.use('/mymemes', myMemes);
-
+app.use('/vote', vote);
 
 // protected routes
 
