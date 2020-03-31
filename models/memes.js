@@ -1,7 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
     const Meme = sequelize.define('meme', {
-        posterUsername: {
+        username: {
             type: DataTypes.STRING,
+            allowNull: false
+        },
+        userID: {
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         url: {
