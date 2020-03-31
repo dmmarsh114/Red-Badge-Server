@@ -6,6 +6,7 @@ const app = express();
 
 // controllers
 const user = require('./controllers/usercontroller');
+const feed = require('./controllers/feedController');
 
 // import db
 const sequelize = require('./db');
@@ -17,6 +18,7 @@ app.use(express.json());
 
 // routes
 app.use('/user', user);
+app.use('/feed', feed);
 
 // protected routes
 
