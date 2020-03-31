@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server for team 6's red badge project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmmarsh114/Red-Badge-Server.git"
+  },
+  "author": "team 6",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmmarsh114/Red-Badge-Server/issues"
+  },
+  "homepage": "https://github.com/dmmarsh114/Red-Badge-Server#readme"
+}
