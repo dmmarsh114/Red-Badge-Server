@@ -5,7 +5,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
 });
 
 sequelize.authenticate()
-    .then(() => console.log(`Connected to ${process.env.DBNAME} postgres database`))
+    .then(() => console.log(`Connected to postgres database`))
     .then(err => err ? console.log(err) : console.log('no errors here!'))
 
 module.exports = sequelize;
