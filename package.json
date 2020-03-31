@@ -4,7 +4,8 @@
   "description": "server for team 6's red badge project",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -12,6 +13,15 @@
   },
   "author": "team 6",
   "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^1.19.4",
+    "pg": "^7.12.1",
+    "sequelize": "^5.21.1"
+  },
   "bugs": {
     "url": "https://github.com/dmmarsh114/Red-Badge-Server/issues"
   },
