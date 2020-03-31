@@ -6,6 +6,7 @@ const app = express();
 
 // controllers
 const user = require('./controllers/usercontroller');
+const feed = require('./controllers/feedController');
 const myMemes = require('./controllers/myMemes');
 
 // import db
@@ -18,7 +19,9 @@ app.use(express.json());
 
 // routes
 app.use('/user', user);
+app.use('/feed', feed);
 app.use('/mymemes', myMemes);
+
 
 // protected routes
 
