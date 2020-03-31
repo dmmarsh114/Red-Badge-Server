@@ -6,7 +6,7 @@ const app = express();
 
 // controllers
 const user = require('./controllers/usercontroller');
-const myMemes = require('./controllers/myMemes');
+const myMemes = require('./controllers/myMemesController');
 
 // import db
 const sequelize = require('./db');
