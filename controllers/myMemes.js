@@ -8,7 +8,7 @@ router.post('/new', (req, res) => {
         userId: req.body.id,
         url: req.body.url,        // <<-- this is where multer comes in 
         caption: req.body.caption,
-        voteCount: 0
+        voteCount: req.body.voteCount
     }
 
     Meme.create(newMeme)
