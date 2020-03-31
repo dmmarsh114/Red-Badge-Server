@@ -6,9 +6,13 @@ const app = express();
 
 // controllers
 const user = require('./controllers/usercontroller');
+const myMemes = require('./controllers/myMemesController');
 const feed = require('./controllers/feedController');
+<<<<<<< HEAD
 const myMemes = require('./controllers/myMemes');
 const vote = require('./controllers/votingController');
+=======
+>>>>>>> a277fe98b5fe5b5614e425e6ee9731bf79eadb09
 
 // import db
 const sequelize = require('./db');

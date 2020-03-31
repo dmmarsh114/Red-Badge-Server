@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-    const Meme = sequelize.define('meme', {
-        username: {
+    const Comment = sequelize.define('comment', {
+        posterUsername: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -8,14 +8,18 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        caption: {
+        comment: {
             type: DataTypes.STRING,
             allowNull: true
         },
         voteCount: {
             type: DataTypes.INTEGER,
             allowNull: true
+        },
+        isReply: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
         }
     })
-    return Meme;
+    return Comment;
 }
