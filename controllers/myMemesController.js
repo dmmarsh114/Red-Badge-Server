@@ -4,11 +4,10 @@ const db = require('../db');
 // POST 
 router.post('/new', (req, res) => {
     let newMeme = {
-        username: req.user.username,
-        userId: req.user.id,
-        url: req.body.url,            // <<-- this is where multer comes in 
+        username: req.body.username, // <<-- username and userId should be changed to req.user.username and req.user.userID
+        url: req.body.url,        // <<-- this is where multer comes in 
         caption: req.body.caption,
-        voteCount: 0  // <<-- voteCount is initialized at 0
+        voteCount: req.body.voteCount
     }
 
     db.memes.create(newMeme)
