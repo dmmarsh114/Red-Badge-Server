@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const db = require('../db');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 
 // POST //
-router.post('/new', (req, res) => {
+router.post('/new', upload.single('memeImage'), (req, res) => {
     let newMeme = {
         username: req.user.username,
         userId: req.user.id,
