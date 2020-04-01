@@ -17,15 +17,16 @@ app.use(express.json());
 app.use(headers);
 
 // middleware
-// app.use(require('./middleware/headers'));
+app.use(require('./middleware/headers'));
 
 // routes
 app.use('/user', user);
 app.use('/feed', feed);
-app.use('/mymemes', myMemes);
-app.use('/vote', vote);
 
 // protected routes
+app.use(require('./middleware/validate-session'));
+app.use('/mymemes', myMemes);
+app.use('/vote', vote);
 
 
 db.sequelize.sync().then(() => {
