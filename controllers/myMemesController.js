@@ -9,8 +9,8 @@ router.post('/new', upload.single('memeImage'), (req, res) => {
     console.log(req.file);
 
     let newMeme = {
-        username: req.user.username,
         userId: req.user.id,
+        username: req.body.username, // <<-- username and userId should be changed to req.user.username and req.user.userID
         url: req.body.url,        // <<-- this is where multer comes in 
         caption: req.body.caption,
         voteCount: req.body.voteCount
