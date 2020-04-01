@@ -1,11 +1,13 @@
 const router = require('express').Router();
 const db = require('../db');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 
 // POST //
-router.post('/new', (req, res) => {
+router.post('/new', upload.single('memeImage'), (req, res) => {
     let newMeme = {
-        username: req.user.username,
         userId: req.user.id,
+        username: req.body.username, // <<-- username and userId should be changed to req.user.username and req.user.userID
         url: req.body.url,        // <<-- this is where multer comes in 
         caption: req.body.caption,
         voteCount: req.body.voteCount
