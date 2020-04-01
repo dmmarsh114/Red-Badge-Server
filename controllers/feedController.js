@@ -9,8 +9,7 @@ router.get('/all', (req, res) => {
         .catch(err => res.status(500).json({
             error: err
         }))
-})
-
+});
 
 // Get By Username //
 router.get('/:username', (req, res) => {
@@ -23,6 +22,6 @@ router.get('/:username', (req, res) => {
         .catch(err => res.status(500).json({
             error: err
         }))
-})
+});
 
 module.exports = router;

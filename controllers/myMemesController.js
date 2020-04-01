@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const db = require('../db');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 
-// POST 
-router.post('/new', (req, res) => {
+// POST //
+router.post('/new', upload.single('memeImage'), (req, res) => {
     let newMeme = {
         userId: req.user.id,
         username: req.body.username, // <<-- username and userId should be changed to req.user.username and req.user.userID
@@ -16,21 +18,21 @@ router.post('/new', (req, res) => {
         .catch(err => res.json({ error: err }))
 });
 
-// GET by user id
+// GET user's memes //
 router.get('/', (req, res) => {
     db.memes.findAll({ where: { userId: req.user.id } })
         .then(data => res.status(200).json(data))
         .catch(err => res.json({ error: err }))
 });
 
-// UPDATE
+// UPDATE //
 router.put('/update/:id', (req, res) => {
     db.memes.update(req.body, { where: { id: req.params.id } })
         .then(meme => res.status(200).send('meme updated!'))
         .catch(err => res.json({ error: err }))
 });
 
-// DELETE
+// DELETE //
 router.delete('/delete/:id', (req, res) => {
     db.memes.destroy({ where: { id: req.params.id } })
         .then(meme => res.status(200).send('meme successfully deleted!'))
