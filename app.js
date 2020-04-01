@@ -3,6 +3,7 @@ require('dotenv').config();
 // express
 const express = require('express');
 const app = express();
+const headers = require('./middleware/headers');
 
 // controllers
 const user = require('./controllers/usercontroller');
@@ -11,8 +12,9 @@ const feed = require('./controllers/feedController');
 const vote = require('./controllers/votingController');
 
 // import db
-const db = require('./db')
+const db = require('./db');
 app.use(express.json());
+app.use(headers);
 
 // middleware
 // app.use(require('./middleware/headers'));
