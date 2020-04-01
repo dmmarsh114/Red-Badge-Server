@@ -7,13 +7,13 @@ const storage = multer.diskStorage({
     // filename -- what the uploaded file will be called in storage //
     // we can also filter file types and sizes here //
     filename: function (req, file, callBack) {
-        callBack(null, file.filename);
+        callBack(file.filename);
     }
 });
 
 const upload = multer({
-    dest: 'uploads/',
     storage: storage,
+    dest: '/uploads/',
     limits: {
         fileSize: 1024 * 1024 * 5 // can store files up to 5 MB in size
     }
