@@ -4,15 +4,15 @@ const db = require('../db')
 router.post('/comment', (req, res) => {
 
     db.comments.create({
-        commentId: req.body.commentId,
+        // commentId: req.body.commentId,
         commenterUsername: req.user.username,
         comment: req.body.comment,
         voteCount: req.body.voteCount,
         isReply: req.body.isReply
     })
-    .then(comment => {
-        res.json(comment);
-    });
+        .then(comment => {
+            res.json(comment);
+        });
 });
 
 router.put('/comment/:commentId', (req, res) => {
@@ -23,10 +23,10 @@ router.put('/comment/:commentId', (req, res) => {
             id: req.params.commentId
         }
     })
-    .then(comment => res.status(200).json(comment))
-    .catch(err => res.json({
-        error: err
-    }))
+        .then(comment => res.status(200).json(comment))
+        .catch(err => res.json({
+            error: err
+        }))
 })
 
 router.delete('/comment/:commentId', (req, res) => {
@@ -35,10 +35,10 @@ router.delete('/comment/:commentId', (req, res) => {
             id: req.params.commentId
         }
     })
-    .then(comment => res.status(200).json(comment))
-    .catch(err => res.json({
-        error: err
-    }))
+        .then(comment => res.status(200).json(comment))
+        .catch(err => res.json({
+            error: err
+        }))
 })
 
 module.exports = router;
