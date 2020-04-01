@@ -13,8 +13,7 @@ const feed = require('./controllers/feedController');
 const vote = require('./controllers/votingController');
 
 // import db
-// const sequelize = require('./db');
-// sequelize.sync(); // {force: true} 
+const db = require('./db')
 app.use(express.json());
 app.use(headers);
 
