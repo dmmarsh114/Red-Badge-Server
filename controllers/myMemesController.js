@@ -37,12 +37,14 @@ const upload = multer({
 // POST //
 router.post('/new', upload.single('memeImage'), (req, res) => {
 
-    console.log(req.file);
+    console.log('UPLOADED FILE', req.file);
+    console.log('UPLOADED FILE PATH', req.file.path);
+    console.log('UPLOADED FILE PATH IS OF TYPE...', typeof req.file.path);
 
     let newMeme = {
         userId: req.user.id,
         username: req.user.username,
-        url: req.file.path,    // the file's location is stored as a url(string) in the db  
+        url: req.file.path.toString(),    // the file's location is stored as a url(string) in the db  
         caption: req.body.caption,
         voteCount: req.body.voteCount
     }
