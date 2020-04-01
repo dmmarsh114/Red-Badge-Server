@@ -5,6 +5,9 @@ const upload = multer({ dest: 'uploads/' });
 
 // POST //
 router.post('/new', upload.single('memeImage'), (req, res) => {
+
+    console.log(req.file);
+
     let newMeme = {
         username: req.user.username,
         userId: req.user.id,
