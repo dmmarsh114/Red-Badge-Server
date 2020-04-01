@@ -3,7 +3,6 @@ require('dotenv').config();
 // express
 const express = require('express');
 const app = express();
-const db = require('./db');
 const headers = require('./middleware/headers');
 
 // controllers
