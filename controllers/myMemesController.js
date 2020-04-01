@@ -4,16 +4,18 @@ const multer = require('multer');
 
 // the code below determines where multer will store uploaded images //
 const storage = multer.diskStorage({
-    // filename -- what the uploaded file will be called in storage //
+    // stores uploaded file in an uploads folder within the server
+    destination: function (req, file, callBack) {
+        callBack(null, '/tmp/uploads');
+    },
     // we can also filter file types and sizes here //
     filename: function (req, file, callBack) {
-        callBack(file.filename);
+        callBack(null, file.filename)
     }
 });
 
 const upload = multer({
     storage: storage,
-    dest: '/uploads/',
     limits: {
         fileSize: 1024 * 1024 * 5 // can store files up to 5 MB in size
     }
