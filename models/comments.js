@@ -1,10 +1,16 @@
 module.exports = (sequelize, DataTypes) => {
     const Comment = sequelize.define('comment', {
-        posterUsername: {
-            type: DataTypes.STRING,
+        id: {
+            type: DataTypes.UUID,
+            primaryKey: true,
+            defaultValue: DataTypes.UUIDV4,
             allowNull: false
         },
-        url: {
+        commentId: {
+            type: DataTypes.UUID,
+            allowNull: false
+        },
+        posterUsername: {
             type: DataTypes.STRING,
             allowNull: false
         },
