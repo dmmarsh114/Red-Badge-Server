@@ -3,7 +3,6 @@ require('dotenv').config();
 // express
 const express = require('express');
 const app = express();
-const db = require('./db');
 const headers = require('./middleware/headers');
 
 // controllers
@@ -13,7 +12,7 @@ const feed = require('./controllers/feedController');
 const vote = require('./controllers/votingController');
 
 // import db
-const db = require('./db')
+const db = require('./db');
 app.use(express.json());
 app.use(headers);
 
