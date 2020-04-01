@@ -1,7 +1,38 @@
 const router = require('express').Router();
 const db = require('../db');
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
+
+// the code below determines where multer will store uploaded images //
+const storage = multer.diskStorage({
+    // destination -- where the uploaded file will be sent to //
+    destination: function (req, file, callBack) {
+        // callBack's first argument is an error message. //
+        // If the upload goes through, we don't want to see any errors, so the argument is null //
+        callBack(null, './uploads/');
+    },
+    // filename -- what the uploaded file will be called in storage //
+    // we can also filter file types and sizes here //
+    filename: function (req, file, callBack) {
+        callBack(null, file.filename);
+    }
+});
+
+const fileFilter = function (req, file, callBack) {
+    // this statement will only store the file if it is a jpeg or png //
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+        callBack(null, true); // stores the file
+    } else {
+        callBack(new Error('invalid file type'), false); // rejects the file
+    }
+}
+
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 1024 * 5 // can store files up to 5 MB in size
+    },
+    fileFilter: fileFilter
+});
 
 // POST //
 router.post('/new', upload.single('memeImage'), (req, res) => {
@@ -11,7 +42,7 @@ router.post('/new', upload.single('memeImage'), (req, res) => {
     let newMeme = {
         userId: req.user.id,
         username: req.user.username,
-        url: req.body.url,        // <<-- this is where multer comes in 
+        url: req.file.path,    // the file's location is stored as a url(string) in the db  
         caption: req.body.caption,
         voteCount: req.body.voteCount
     }
