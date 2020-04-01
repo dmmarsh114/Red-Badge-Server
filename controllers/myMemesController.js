@@ -5,6 +5,7 @@ const db = require('../db');
 router.post('/new', (req, res) => {
     let newMeme = {
         username: req.user.username,
+        userId: req.user.id,
         url: req.body.url,        // <<-- this is where multer comes in 
         caption: req.body.caption,
         voteCount: req.body.voteCount
