@@ -6,7 +6,7 @@ router.post('/', (req, res) => {
     db.comments.create({
         userId: req.user.id,
         commentId: req.body.commentId,
-        commenterUsername: req.user.username,
+        posterUsername: req.user.username,
         comment: req.body.comment,
         voteCount: req.body.voteCount,
         isReply: req.body.isReply
