@@ -5,7 +5,7 @@ router.post('/', (req, res) => {
 
     db.comments.create({
         userId: req.user.id,
-        commentId: req.body.commentId,
+        memeId: req.meme.id,
         posterUsername: req.user.username,
         comment: req.body.comment,
         voteCount: req.body.voteCount,
