@@ -16,7 +16,7 @@ db.sequelize = sequelize;
 //models
 db.user = require('./models/user')(sequelize, Sequelize);
 db.memes = require('./models/memes')(sequelize, Sequelize);
-// db.comments = require('./models/comments')(sequelize, Sequelize);
+db.comments = require('./models/comments')(sequelize, Sequelize);
 
 //db relations
 db.user.hasMany(db.memes);
