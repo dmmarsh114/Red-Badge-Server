@@ -1,10 +1,11 @@
 const router = require('express').Router();
 const db = require('../db')
 
-router.post('/comment', (req, res) => {
+router.post('/', (req, res) => {
 
     db.comments.create({
-        // commentId: req.body.commentId,
+        userId: req.user.id,
+        commentId: req.comments.commentId,
         commenterUsername: req.user.username,
         comment: req.body.comment,
         voteCount: req.body.voteCount,

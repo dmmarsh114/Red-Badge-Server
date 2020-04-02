@@ -10,6 +10,7 @@ const user = require('./controllers/usercontroller');
 const myMemes = require('./controllers/myMemesController');
 const feed = require('./controllers/feedController');
 const vote = require('./controllers/votingController');
+const comment = require('./controllers/commentscontroller');
 
 // import db
 const db = require('./db');
@@ -30,6 +31,7 @@ app.use('/feed', feed);
 app.use(require('./middleware/validate-session'));
 app.use('/mymemes', myMemes);
 app.use('/vote', vote);
+app.use('/comment', comment)
 
 
 db.sequelize.sync().then(() => {

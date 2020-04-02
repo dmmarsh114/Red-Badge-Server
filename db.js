@@ -22,8 +22,8 @@ db.memes = require('./models/memes')(sequelize, Sequelize);
 db.user.hasMany(db.memes);
 db.memes.belongsTo(db.user);
 
-// db.memes.hasMany(db.comments);
-// db.comments.belongsTo(db.memes);
+db.memes.hasMany(db.comments);
+db.comments.belongsTo(db.memes);
 
 // console.log(db);
 
