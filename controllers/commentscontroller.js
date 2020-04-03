@@ -3,7 +3,7 @@ const db = require('../db')
 
 router.post('/', (req, res) => {
 
-    db.comments.create({
+    db.comment.create({
         posterId: req.user.id,
         memeId: req.meme.id,
         posterUsername: req.user.username,
@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
 });
 
 router.put('/comment/:commentId', (req, res) => {
-    db.comments.update({
+    db.comment.update({
         comment: req.body.comment,
     }, {
         where: {

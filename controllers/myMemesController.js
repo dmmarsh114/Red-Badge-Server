@@ -19,28 +19,28 @@ router.post('/new', upload.single('memeImage'), (req, res) => {
         voteCount: req.body.voteCount
     }
 
-    db.memes.create(newMeme)
+    db.meme.create(newMeme)
         .then(data => res.status(200).json(data))
         .catch(err => res.json({ error: err }))
 });
 
 // GET user's memes //
 router.get('/', (req, res) => {
-    db.memes.findAll({ where: { userId: req.user.id } })
+    db.meme.findAll({ where: { userId: req.user.id } })
         .then(data => res.status(200).json(data))
         .catch(err => res.json({ error: err }))
 });
 
 // UPDATE //
 router.put('/update/:id', (req, res) => {
-    db.memes.update(req.body, { where: { id: req.params.id } })
+    db.meme.update(req.body, { where: { id: req.params.id } })
         .then(meme => res.status(200).send('meme updated!'))
         .catch(err => res.json({ error: err }))
 });
 
 // DELETE //
 router.delete('/delete/:id', (req, res) => {
-    db.memes.destroy({ where: { id: req.params.id } })
+    db.meme.destroy({ where: { id: req.params.id } })
         .then(meme => res.status(200).send('meme successfully deleted!'))
         .catch(err => res.json({ error: err }))
 });
