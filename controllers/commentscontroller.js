@@ -4,8 +4,8 @@ const db = require('../db')
 router.post('/', (req, res) => {
 
     db.comment.create({
-        memeId: req.body.id,
-        posterUsername: req.meme.username,
+        memeId: req.body.memeId,
+        posterUsername: req.user.username,
         comment: req.body.comment,
         voteCount: req.body.voteCount,
         isReply: req.body.isReply
