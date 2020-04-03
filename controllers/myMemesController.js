@@ -2,8 +2,12 @@ const router = require('express').Router();
 const db = require('../db');
 const multer = require('multer');
 
+const storage = multer.diskStorage({
+    destination: './public/uploads/'
+});
+
 const upload = multer({
-    dest: 'uploads'
+    storage: storage
 });
 
 // POST //
