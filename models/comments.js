@@ -10,10 +10,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.UUID,
             allowNull: false
         },
-        posterId: {
-            type: DataTypes.UUID,
-            allowNull: false
-        },
         posterUsername: {
             type: DataTypes.STRING,
             allowNull: false
