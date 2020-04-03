@@ -4,7 +4,7 @@ const db = require("../db");
 
 // Put Request //
 router.put('/:postId', (req, res) => {
-    db.memes.update(req.body, {
+    db.meme.update(req.body, {
         where: {
             id: req.params.postId
         }
@@ -16,7 +16,7 @@ router.put('/:postId', (req, res) => {
 
 // Delete Request //
 router.delete('/:postId', (req, res) => {
-    db.memes.destroy({
+    db.meme.destroy({
         where: {
             id: req.params.postId
         }

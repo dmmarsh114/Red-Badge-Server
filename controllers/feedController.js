@@ -4,7 +4,7 @@ const db = require("../db");
 
 // Get All Request //
 router.get('/all', (req, res) => {
-    db.memes.findAll()
+    db.meme.findAll()
         .then(meme => res.status(200).json(meme))
         .catch(err => res.status(500).json({
             error: err
@@ -13,7 +13,7 @@ router.get('/all', (req, res) => {
 
 // Get By Username //
 router.get('/:username', (req, res) => {
-    db.memes.findAll({
+    db.meme.findAll({
         where: {
             username: req.params.username
         }
