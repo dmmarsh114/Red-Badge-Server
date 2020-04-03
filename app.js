@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(headers);
 
 // create a static folder where uploads will be stored
-// app.use(express.static('./public'));
+app.use(express.static('./public'));
 
 // middleware
 app.use(require('./middleware/headers'));
