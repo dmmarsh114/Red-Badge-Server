@@ -3,7 +3,7 @@ const db = require('../db');
 const multer = require('multer');
 
 const upload = multer({
-    dest: 'uploads'
+    dest: './uploads/'
 });
 
 // POST //
