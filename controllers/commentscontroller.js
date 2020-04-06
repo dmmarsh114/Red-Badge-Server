@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const db = require('../db')
 
-router.post('/', (req, res) => {
-
+// create comment
+router.post('/create', (req, res) => {
     db.comment.create({
         memeId: req.body.memeId,
         posterUsername: req.user.username,
@@ -15,7 +15,30 @@ router.post('/', (req, res) => {
         });
 });
 
-router.put('/comment/:commentId', (req, res) => {
+// for getting all comment for one user
+router.get('/getUserComments/:id', (req, res) => {
+    db.comment.findAll({
+        where: {
+            userId: req.user.id
+        }
+    })
+    .then(comment => res.status(200).json(post))
+    .catch(err => res.json({
+        error: err
+    }))
+})
+
+// get all comment in db
+router.get('/getAllComments', (req, res) => {
+    db.comment.findAll()
+    .then(comment => res.status(200).json(comment))
+    .catch(err => res.status(500).json({
+        error: err
+    }))
+});
+
+// edit comment
+router.put('/edit/:commentId', (req, res) => {
     db.comment.update({
         comment: req.body.comment,
     }, {
@@ -29,7 +52,8 @@ router.put('/comment/:commentId', (req, res) => {
         }))
 })
 
-router.delete('/comment/:commentId', (req, res) => {
+// delete comment
+router.delete('/delete/:commentId', (req, res) => {
     db.comment.destroy({
         where: {
             id: req.params.commentId
