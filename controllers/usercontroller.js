@@ -85,6 +85,8 @@ router.get('/users', (req, res) => {
                             {
                                 memeId: meme.id,
                                 userId: meme.userId,
+                                url: meme.url,
+                                voteCount: meme.voteCount,
                                 caption: meme.caption,
                                 comment: this.post.comment.map(comment => {
 
