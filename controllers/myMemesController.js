@@ -1,13 +1,29 @@
 const router = require('express').Router();
 const db = require('../db');
+const aws = require('aws-sdk');
 const multer = require('multer');
+const multerS3 = require('multer-s3');
 
-const storage = multer.diskStorage({
-    destination: './public/uploads/'
+aws.config.update({
+    secretAccessKey: process.env.AWS_ACCESS_KEY,
+    accessKeyId: process.env.AWS_ACESS_ID,
+    region: 'us-east-2'
 });
 
+const s3 = new aws.S3();
+
 const upload = multer({
-    storage: storage
+    storage: multerS3({
+        s3: s3,
+        bucket: 'team6-red-badge',
+        acl: 'public-read',
+        metadata: function (req, file, cb) {
+            cb(null, { fieldName: file.fieldname });
+        },
+        key: function (req, file, cb) {
+            cb(null, Date.now().toString() + '-' + file.originalname)
+        }
+    })
 });
 
 // POST //
@@ -18,7 +34,7 @@ router.post('/new', upload.single('memeImage'), (req, res) => {
     let newMeme = {
         userId: req.user.id,
         username: req.user.username,
-        url: req.file.filename,   
+        url: req.file.location,   
         caption: req.body.caption,
         voteCount: req.body.voteCount
     }
