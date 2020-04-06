@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const db = require('../db')
 
-router.post('/', (req, res) => {
+router.post('/create', (req, res) => {
 
     db.comment.create({
         memeId: req.body.memeId,
@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
         });
 });
 
-router.put('/comment/:commentId', (req, res) => {
+router.put('/edit/:commentId', (req, res) => {
     db.comment.update({
         comment: req.body.comment,
     }, {
@@ -29,7 +29,7 @@ router.put('/comment/:commentId', (req, res) => {
         }))
 })
 
-router.delete('/comment/:commentId', (req, res) => {
+router.delete('/delete/:commentId', (req, res) => {
     db.comment.destroy({
         where: {
             id: req.params.commentId
