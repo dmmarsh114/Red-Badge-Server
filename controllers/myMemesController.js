@@ -34,7 +34,7 @@ router.post('/new', upload.single('memeImage'), (req, res) => {
     let newMeme = {
         userId: req.user.id,
         username: req.user.username,
-        url: req.file.location,   
+        url: req.file.location,
         caption: req.body.caption,
         voteCount: req.body.voteCount
     }
