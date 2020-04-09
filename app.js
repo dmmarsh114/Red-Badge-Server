@@ -23,11 +23,11 @@ app.use(require('./middleware/headers'));
 // routes
 app.use('/user', user);
 app.use('/feed', feed);
+app.use('/vote', vote);
 
 // protected routes
 app.use(require('./middleware/validate-session'));
 app.use('/mymemes', myMemes);
-app.use('/vote', vote);
 app.use('/comment', comment)
 
 
