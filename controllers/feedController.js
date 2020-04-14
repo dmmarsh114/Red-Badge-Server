@@ -4,7 +4,13 @@ const db = require("../db");
 
 // Get All Request //
 router.get('/all', (req, res) => {
-    db.meme.findAll()
+    db.meme.findAll({
+        include: [
+            {
+                model: db.comment
+            }
+        ]
+    })
         .then(meme => res.status(200).json(meme))
         .catch(err => res.status(500).json({
             error: err
