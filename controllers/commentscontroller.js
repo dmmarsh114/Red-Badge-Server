@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const db = require('../db')
+const validateSession = require('../middleware/validate-session');
 
 // create comment
-router.post('/create', (req, res) => {
+router.post('/create', validateSession, (req, res) => {
     db.comment.create({
         memeId: req.body.memeId,
         posterUsername: req.user.username,
@@ -16,7 +17,7 @@ router.post('/create', (req, res) => {
 });
 
 // for getting all comment for one user
-router.get('/getUserComments/:id', (req, res) => {
+router.get('/getUserComments/:id', validateSession, (req, res) => {
     db.comment.findAll({
         where: {
             userId: req.user.id
@@ -38,7 +39,7 @@ router.get('/getAllComments', (req, res) => {
 });
 
 // edit comment
-router.put('/edit/:commentId', (req, res) => {
+router.put('/edit/:commentId', validateSession, (req, res) => {
     db.comment.update({
         comment: req.body.comment,
     }, {
@@ -53,7 +54,7 @@ router.put('/edit/:commentId', (req, res) => {
 })
 
 // delete comment
-router.delete('/delete/:commentId', (req, res) => {
+router.delete('/delete/:commentId', validateSession, (req, res) => {
     db.comment.destroy({
         where: {
             id: req.params.commentId
