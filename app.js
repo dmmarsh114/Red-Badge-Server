@@ -17,9 +17,6 @@ const db = require('./db');
 app.use(express.json());
 app.use(headers);
 
-// create a static folder where uploads will be stored
-app.use(express.static('./public'));
-
 // middleware
 app.use(require('./middleware/headers'));
 
@@ -27,12 +24,11 @@ app.use(require('./middleware/headers'));
 app.use('/user', user);
 app.use('/feed', feed);
 app.use('/comment', comment);
+app.use('/vote', vote);
 
 // protected routes
 app.use(require('./middleware/validate-session'));
 app.use('/mymemes', myMemes);
-app.use('/vote', vote);
-
 
 db.sequelize.sync().then(() => {
     app.listen(process.env.PORT, () => {
