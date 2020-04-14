@@ -23,13 +23,12 @@ app.use(require('./middleware/headers'));
 // routes
 app.use('/user', user);
 app.use('/feed', feed);
+app.use('/comment', comment);
 app.use('/vote', vote);
 
 // protected routes
 app.use(require('./middleware/validate-session'));
 app.use('/mymemes', myMemes);
-app.use('/comment', comment)
-
 
 db.sequelize.sync().then(() => {
     app.listen(process.env.PORT, () => {
