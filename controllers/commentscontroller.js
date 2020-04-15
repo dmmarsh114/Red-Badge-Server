@@ -23,19 +23,32 @@ router.get('/getUserComments/:id', validateSession, (req, res) => {
             userId: req.user.id
         }
     })
-    .then(comment => res.status(200).json(post))
-    .catch(err => res.json({
-        error: err
-    }))
+        .then(comment => res.status(200).json(post))
+        .catch(err => res.json({
+            error: err
+        }))
+})
+
+// get all comments on one meme
+router.get('/getbymeme/:id', (req, res) => {
+    db.comment.findAll({
+        where: {
+            memeId: req.params.id
+        }
+    })
+        .then(comments => res.status(200).json(comments))
+        .catch(err => res.json({
+            error: err
+        }))
 })
 
 // get all comment in db
 router.get('/getAllComments', (req, res) => {
     db.comment.findAll()
-    .then(comment => res.status(200).json(comment))
-    .catch(err => res.status(500).json({
-        error: err
-    }))
+        .then(comment => res.status(200).json(comment))
+        .catch(err => res.status(500).json({
+            error: err
+        }))
 });
 
 // edit comment
