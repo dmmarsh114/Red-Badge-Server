@@ -29,7 +29,7 @@ Nathan Gaffney - NathanGaffney - view my individual github page at https://githu
 * /user/login - login to an existing account
 * /user/users - returns all users, along with their posts and their comments
 
-#### Feed endpoints:
+#### Feed:
 * /feed/all - returns all memes
 * /feed/:username - returns all memes posted by specified user
 
