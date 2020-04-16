@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require("../db");
 
-// Get
+// Get //
 router.get('/:postId', (req, res) => {
     db.meme.get(req.body, {
         where: {
