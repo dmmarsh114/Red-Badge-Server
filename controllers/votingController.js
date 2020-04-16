@@ -4,7 +4,7 @@ const db = require("../db");
 
 // Get //
 router.get('/:postId', (req, res) => {
-    db.meme.get(req.body, {
+    db.meme.findOne(req.body, {
         where: {
             id: req.params.postId
         }
